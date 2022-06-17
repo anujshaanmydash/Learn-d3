@@ -1,0 +1,19 @@
+.ticks{
+    fill: rgb(127, 127, 127);
+    & line{
+        stroke: #c7c7c7;
+    }
+}
+.bars{
+    fill: #1aa669;
+}
+.circle{
+    fill: none;
+    stroke: #bdc7ff;
+    stroke-width: 2px;
+}
+.barChartButton{
+    padding: 0.7rem 1rem;
+    border-radius: 5px ;
+    margin:10px
+}
