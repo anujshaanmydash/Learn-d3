@@ -45,7 +45,7 @@ const Practical = () => {
         <p>{`13) Stacked Area Chart`}</p>
       </Link>
       <Link to='/practical/connected_scatterplot'>
-        <p>{`14) Connected ScatterPlot`}</p>
+        <p>{`14) Connected ScatterPlot with tooltip`}</p>
       </Link>
       <Link to='/practical/zoom_linechart'>
         <p>{`15) Zoomable Line Char`}</p>

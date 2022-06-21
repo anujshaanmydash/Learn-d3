@@ -53,13 +53,13 @@ const ConnectScatterPlot = ({ data }) => {
     svg
       .append('g')
       .attr('class', 'x-axis')
-      .attr('transform', `translate(${margin.left},${chartHeight + 10})`)
+      .attr('transform', `translate(${margin.left - 20},${chartHeight + 10})`)
       .call(xAxes);
 
     svg
       .append('g')
       .attr('class', 'y-axis')
-      .attr('transform', `translate(${margin.left},10)`)
+      .attr('transform', `translate(${margin.left - 20},10)`)
       .call(yAxes);
 
     //add lines
@@ -123,7 +123,11 @@ const ConnectScatterPlot = ({ data }) => {
       <div ref={tooltip} className='tooltip'></div>
       <svg
         ref={selectedSvg}
-        style={{ width: '100%', minHeight: '500px', background: '#e5e5e5' }}
+        style={{
+          width: '100%',
+          minHeight: '500px',
+          overflow: 'visible',
+        }}
       ></svg>
     </div>
   );
