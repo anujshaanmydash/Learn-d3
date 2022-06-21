@@ -51,3 +51,39 @@ h1{
     align-items: center;
     justify-content: center;
 }
+.tooltip {
+    padding: 5px;
+    position: absolute;
+    z-index: 1002;
+    background-color: white;
+    filter: drop-shadow(2px 3px 4px rgba(0, 0, 0, 0.226));
+    min-width: 70px;
+    border-radius: 6px;
+    border: 1px solid #80808080;
+    display: none;
+    font-size: 12.5px;
+    &::before {
+      content: "";
+      width: 20%;
+      height: 15%;
+      clip-path: polygon(0 0, 100% 0, 50% 100%, 50% 100%);
+      background-color: white;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2000;
+    }
+  
+    &::after {
+      content: "";
+      width: calc(20% + 1.5px);
+      height: calc(15% + 1.5px);
+      clip-path: polygon(0 0, 100% 0, 50% 100%, 50% 100%);
+      background-color: #80808080;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+}

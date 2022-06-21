@@ -21,6 +21,8 @@ const StackBar = ({ data, keys, colors }) => {
     const width = dimension.width;
     const svg = select(selectedSvg.current);
 
+    svg.selectAll('*').remove();
+
     const stackGenerator = stack().keys(keys).order(stackOrderAscending);
     const layers = stackGenerator(data);
 

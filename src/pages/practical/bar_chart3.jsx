@@ -13,6 +13,7 @@ const BarChar3 = () => {
     const chartWidth = dimension.width - margin.left - margin.right;
     const chartHeight = dimension.height - margin.top - margin.bottom;
     const svg = select(selectedSvg.current);
+
     const xScale = scaleBand()
       .domain(data.map((value, index) => index))
       .range([0, chartWidth - 50])
