@@ -26,7 +26,7 @@ const BarChar3 = () => {
       .range(['green', 'orange', 'red'])
       .clamp(true);
 
-    const xAxis = axisBottom(xScale).ticks(data.length);
+    const xAxis = axisBottom(xScale);
     console.log(chartHeight);
     svg
       .select('.x-axis')

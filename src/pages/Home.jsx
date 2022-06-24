@@ -10,6 +10,9 @@ const Home = () => {
       <Link to={`/practical`}>
         <h2>Practical</h2>
       </Link>
+      <Link to={`/farhadSirChart`}>
+        <h2>Farhad Sir Charts</h2>
+      </Link>
     </div>
   );
 };

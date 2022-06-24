@@ -48,7 +48,13 @@ const Practical = () => {
         <p>{`14) Connected ScatterPlot with tooltip`}</p>
       </Link>
       <Link to='/practical/zoom_linechart'>
-        <p>{`15) Zoomable Line Char`}</p>
+        <p>{`15) Zoomable Line Chart`}</p>
+      </Link>
+      <Link to='/practical/radar_chart'>
+        <p>{`16) Radar Chart`}</p>
+      </Link>
+      <Link to='/practical/gauge_chart'>
+        <p>{`17) Gauge Chart`}</p>
       </Link>
     </div>
   );
