@@ -11,6 +11,9 @@ const FarhadSirChart = () => {
       <Link to='/farhadSirChart/line_chart'>
         <h3>{`2) Line Chart`}</h3>
       </Link>
+      <Link to='/farhadSirChart/speed_indicator'>
+        <h3>{`3) Speed Indicator`}</h3>
+      </Link>
     </div>
   )
 }
