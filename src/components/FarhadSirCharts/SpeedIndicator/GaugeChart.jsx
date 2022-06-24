@@ -19,6 +19,8 @@ const GaugeChart = ({ speed }) => {
 
     svg.selectAll('*').remove();
 
+    const rotate = scaleLinear().domain([0, 100]).range([0, 1]);
+
     const arcGenerator = arc().innerRadius(125).outerRadius(190);
 
     const pieGenerator = pie()
@@ -51,13 +53,10 @@ const GaugeChart = ({ speed }) => {
       .append('g')
       .attr('transform', `translate(${chartWidth / 2},${chartHeight / 2})`);
 
-    console.log(data);
-    const rotate = scaleLinear().domain([0, 100]).range([0, 1]);
-
     const needle = new Needle({
       svg: svg,
       len: (chartHeight / 2) * 0.4,
-      radius: (chartHeight / 3) * 0.15,
+      radius: (chartHeight / 3) * 0.1,
       x: chartWidth / 2,
       y: chartWidth / 2,
       group: g,

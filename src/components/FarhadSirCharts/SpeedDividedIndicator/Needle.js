@@ -1,4 +1,5 @@
-import * as d3 from 'd3';
+
+import { easeElastic, select } from 'd3';
 
 const percentToDegree = (p) => p * 360;
 
@@ -39,7 +40,7 @@ class Needle {
       this.group
         .transition()
         .delay(500)
-        .ease(d3.easeElastic)
+        .ease(easeElastic)
         .duration(3000)
         .select('path')
         .tween('progress', () => {
@@ -47,7 +48,7 @@ class Needle {
           const lastP = this.lastP || 0;
           return function (step) {
             const progress = lastP + step * (p - lastP);
-            d3.select(this).attr('d', self.getPath(progress));
+            select(this).attr('d', self.getPath(progress));
           };
         })
         .on('end', () => (this.lastP = p));

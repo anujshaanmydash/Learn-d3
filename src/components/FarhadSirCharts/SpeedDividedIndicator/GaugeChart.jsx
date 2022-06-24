@@ -17,13 +17,7 @@ const GaugeChart = ({ speed, colorData }) => {
 
     svg.selectAll('*').remove();
 
-    const Poor = scaleLinear().domain([0, 2.5]).range([0, 0.5]);
-
-    const Developing = scaleLinear().domain([2.6, 3]).range([0.51, 0.6]);
-
-    const Strong = scaleLinear().domain([3.1, 4]).range([0.61, 0.8]);
-
-    const Excellent = scaleLinear().domain([4.1, 5]).range([0.81, 1]);
+    const rotate = scaleLinear().domain([0, 5]).range([0, 1]);
 
     const pieGenerator = pie()
       .value((d) => d.value)
@@ -61,14 +55,7 @@ const GaugeChart = ({ speed, colorData }) => {
 
     needle.render(0);
 
-    if (speed < 50) needle.animateTo(Poor(speed));
-    else if (speed < 60 && speed > 51) {
-      needle.animateTo(Developing(speed));
-    } else if (speed < 80 && speed > 60) {
-      needle.animateTo(Strong(speed));
-    } else if (speed < 100 && speed > 80) {
-      needle.animateTo(Excellent(speed));
-    }
+    needle.animateTo(rotate(speed));
   };
 
   useEffect(() => {
