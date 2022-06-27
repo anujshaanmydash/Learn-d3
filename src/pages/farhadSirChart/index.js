@@ -14,8 +14,17 @@ const FarhadSirChart = () => {
       <Link to='/farhadSirChart/speed_indicator'>
         <h3>{`3) Speed Indicator`}</h3>
       </Link>
+      <Link to='/farhadSirChart/stacked_barchart'>
+        <h3>{`4) Stacked Bar Chart`}</h3>
+      </Link>
+      <Link to='/farhadSirChart/mekko_chart'>
+        <h3>{`5) Mosaic or Mekko Chart`}</h3>
+      </Link>
       <Link to='/farhadSirChart/function_chart'>
-        <h3>{`4) Function Chart`}</h3>
+        <h3>{`6) Function Chart`}</h3>
+      </Link>
+      <Link to='/farhadSirChart/compare_value_chart'>
+        <h3>{`7) Compare Values Chart`}</h3>
       </Link>
     </div>
   )
