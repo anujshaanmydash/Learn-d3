@@ -23,8 +23,11 @@ const FarhadSirChart = () => {
       <Link to='/farhadSirChart/function_chart'>
         <h3>{`6) Function Chart`}</h3>
       </Link>
-      <Link to='/farhadSirChart/compare_value_chart'>
+      <Link to='/farhadSirChart/compare_values_chart'>
         <h3>{`7) Compare Values Chart`}</h3>
+      </Link>
+      <Link to='/farhadSirChart/waterfall_chart'>
+        <h3>{`8) Waterfall chart`}</h3>
       </Link>
     </div>
   )

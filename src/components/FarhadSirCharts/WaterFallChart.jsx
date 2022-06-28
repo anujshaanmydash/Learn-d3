@@ -11,14 +11,14 @@ import {
 import React, { useEffect, useRef } from 'react';
 import { useResizeObserver } from '../../hooks/resizeObserver';
 
-const StackedBarChart = ({ data }) => {
+const WaterFallChart = ({ data }) => {
   const wrapperSvg = useRef(null);
   const selectedSvg = useRef(null);
   const dimension = useResizeObserver(wrapperSvg);
   const margin = { top: 10, bottom: 40, right: 10, left: 50 };
   const colors = ['#00008B', '#3A8CCB', '#FCB316'];
 
-  const drawStackedBarChart = () => {
+  const drawWaterFallChart = () => {
     const chartHeight = dimension.height - margin.top - margin.bottom;
     const chartWidth = dimension.width - margin.left - margin.right;
     const svg = select(selectedSvg.current);
@@ -26,7 +26,7 @@ const StackedBarChart = ({ data }) => {
     svg.selectAll('*').remove();
 
     const x = scaleBand()
-      .domain(data.map((d) => d.year))
+      .domain(data.map((d) => d.name))
       .range([0, chartWidth])
       .padding(0.2);
 
@@ -34,7 +34,7 @@ const StackedBarChart = ({ data }) => {
       .domain([0, 1])
       .range([chartHeight - 10, 0]);
 
-    const xAxes = axisBottom(x).tickFormat('val');
+    const xAxes = axisBottom(x).tickFormat('Val');
     const yAxes = axisLeft(y).ticks(5).tickFormat(format('~%'));
 
     svg
@@ -58,50 +58,35 @@ const StackedBarChart = ({ data }) => {
       .attr('stroke-width', 0.1)
       .call(yAxesGrid);
 
-    const uniqueBar = Object.keys(data[0]).slice(1);
-
-    const color = scaleOrdinal().domain(uniqueBar).range(colors);
-
-    console.log(data);
-
-    data.forEach((d) => {
-      let bar = 0;
-      for (let i in uniqueBar) {
-        let name = uniqueBar[i];
-        bar += +d[name];
-      }
-      for (let i in uniqueBar) {
-        let name = uniqueBar[i];
-        d[name] = (d[name] / bar) * 1;
-      }
+    data.push({
+      name: 'Start',
+      start: 0,
+      end: data[0].val,
+      class: 'start',
     });
 
-    const stackGenerator = stack().keys(uniqueBar)(data);
+    // let cumulative = data.;
+    // for (let i = 0; i < data.length; i++) {
+    //   data[i].start = cumulative;
+    //   cumulative += data[i].val;
+    //   data[i].end = cumulative;
+    // }
 
-    console.log(data);
+    data.push({
+      name: 'End',
+      start: 0,
+      class: 'end',
+    });
 
-    svg
-      .append('g')
-      .attr('transform', `translate(${50},10)`)
-      .selectAll('g')
-      .data(stackGenerator)
-      .join('g')
-      .attr('fill', (d) => color(d.key))
-      .selectAll('rect')
-      .data((d) => d)
-      .join('rect')
-      .attr('x', (sequence) => x(sequence.data.year))
-      .attr('y', (sequence) => y(sequence[1]))
-      .attr('width', x.bandwidth())
-      .attr('height', (d) => y(d[0]) - y(d[1]) - 1)
-      .attr('stroke', '#eee')
-      .append('text');
+    data.forEach((d) => {
+      console.log(d.name);
+    });
   };
 
   useEffect(() => {
     if (!dimension) return;
 
-    drawStackedBarChart();
+    drawWaterFallChart();
     //eslint-disable-next-line
   }, [dimension, data]);
 
@@ -115,4 +100,4 @@ const StackedBarChart = ({ data }) => {
   );
 };
 
-export default StackedBarChart;
+export default WaterFallChart;

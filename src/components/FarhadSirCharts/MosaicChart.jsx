@@ -82,7 +82,8 @@ const MosaicChart = ({ data }) => {
       .selectAll('g')
       .data(stackGenerator)
       .join('g')
-      .attr('fill', (d) => color(d.key))
+      .attr('fill', (d) => color(d.key));
+    rect
       .selectAll('rect')
       .data((d) => d)
       .join('rect')
@@ -90,7 +91,10 @@ const MosaicChart = ({ data }) => {
       .attr('y', (suspense) => y(suspense[1]))
       .attr('width', x.bandwidth())
       .attr('height', (d) => y(d[0]) - y(d[1]) - 1)
-      .attr('stroke', '#eee');
+      .attr('stroke', '#eee')
+      .style('opacity', 0.8);
+
+    rect.append('text').text((d) => d[0].darkBlue);
   };
 
   useEffect(() => {
